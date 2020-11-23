@@ -14,6 +14,23 @@ CORS(app)
 
 # create the jackson family object
 jackson_family = FamilyStructure("Jackson")
+jackson_family.add_member({
+"first_name":"John",
+"id": 1,
+"lucky_numbers":[7, 13, 22]
+})
+jackson_family.add_member({
+"first_name":"Jane",
+"id":2,
+"lucky_numbers":[10, 14, 3]
+})
+jackson_family.add_member({
+"first_name":"Jimmy",
+"id":3,
+"lucky_numbers":[1]
+})
+
+
 
 # Handle/serialize errors like a JSON object
 @app.errorhandler(APIException)
@@ -34,8 +51,6 @@ def handle_hello():
         "hello": "world",
         "family": members
     }
-
-
     return jsonify(response_body), 200
 
 # this only runs if `$ python src/app.py` is executed
